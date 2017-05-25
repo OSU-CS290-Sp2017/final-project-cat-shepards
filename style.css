@@ -1,5 +1,5 @@
 body {
-	font-family: 'Julius Sans One', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	background-color: #e2dfd9;
 	margin: 0;
 }
@@ -11,6 +11,7 @@ body {
 	background-color: #f9cd8b;
 	color: white;
 	font-size: 70px;
+	font-family: 'Julius Sans One', sans-serif;
 }
 
 .navbar {
@@ -26,7 +27,8 @@ body {
 	display: inline-block;
 	padding: 10px;
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: 300;
+	color: #48453f;
 }
 
 .navbar-search {
@@ -37,4 +39,29 @@ body {
 
 .navlink:hover {
 	background-color: rgba(255, 213, 149, 0.38);
+	cursor: pointer;
+}
+
+#navbar-search-input {
+	font-size: 15px;
+	width: 300px;
+	background-color: #e2dfd9;
+	border: 1px solid #d2cfcb;
+	padding: 3px;
+	border-radius: 3px;
+}
+
+#navbar-search-input:focus {
+	background-color: white;
+}
+
+#navbar-search-button {
+	border: none;
+	font-size: 20px;
+	background-color: white;
+}
+
+#navbar-search-button:hover {
+	color: #f9cd8b;
+	cursor: pointer;
 }
