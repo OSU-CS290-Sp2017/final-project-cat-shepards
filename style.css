@@ -1,5 +1,5 @@
 body {
-	font-family: 'Nunito', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
 	background-color: #e2dfd9;
 	margin: 0;
 }
@@ -10,6 +10,7 @@ body {
 	text-align: center;
 	background-color: #f9cd8b;
 	color: white;
+	font-size: 70px;
 }
 
 .navbar {
@@ -24,6 +25,8 @@ body {
 .navitem {
 	display: inline-block;
 	padding: 10px;
+	font-size: 20px;
+	font-weight: 500;
 }
 
 .navbar-search {
