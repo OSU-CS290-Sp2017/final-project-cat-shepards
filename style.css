@@ -61,14 +61,14 @@ body {
 	color: #f29e38;
 	cursor: pointer;
 }
-<<<<<<< HEAD
+
 
 #add-cat-button {
 	font-size: 137px;
 	color: #f29e38;
 	border:none;
 	padding:none;
-	background-color: #e2dfd9;
+	background-color: #f2e9ce;
 }
 
 #add-cat-button:hover {
@@ -81,4 +81,3 @@ body {
 	margin-left: 10%;
 }
 =======
->>>>>>> d9984f99130fb12ef76e8faf5c23a1af7b05d214
