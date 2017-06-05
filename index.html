@@ -26,16 +26,24 @@
   		</nav>
 	</header>
 
-  <main class="cat-container">
+    <main class="cat-container">
 
-    <article class="add-cat">
-      <div class = "add-icon">
-      <button type = "button" id="add-cat-button">  <i class = "fa fa-plus-square-o"></i></button>
-      </div>
+      <article class="add-cat">
+        <div class = "add-icon">
+        <button type = "button" id="add-cat-button">  <i class = "fa fa-plus-square-o"></i></button>
+        </div>
+      </article>
 
-    </article>
-  </main>
+      <article class="cat-card">
+        <div class="cat-card-content">
+          <img src="{{url}}">
+          <p class="cat-author hidden"> {{author}} </p>
+          <p class="cat-caption">{{caption}}</p>
+        </div> 
+      </article>
+    
+    </main>
 
   </body>
 
-  </html>
+</html>
