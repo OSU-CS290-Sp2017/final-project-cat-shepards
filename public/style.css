@@ -4,6 +4,9 @@ body {
 	margin: 0;
 }
 
+.hidden {
+	display: none;
+}
 .site-title {
 	margin: 0;
 	text-align: center;
@@ -64,20 +67,54 @@ body {
 
 
 #add-cat-button {
-	font-size: 137px;
+	font-size: 200px;
 	color: #f29e38;
 	border:none;
 	padding:none;
 	background-color: #f2e9ce;
+	width:  200px;
+    height: 200px;
+    margin: 0;
+    text-shadow: 5px 5px 13px #c4bfbf;
 }
 
 #add-cat-button:hover {
-	font-size: 150px;
-	color:#16e73e;
+	font-size: 215px;
+	color: #a53b19;
 	cursor:pointer;
+
+
 }
 .cat-container {
 	display: flex;
 	margin-left: 10%;
+	justify-content: center;
+/*	margin: 10px;
+*/}
+
+.cat-card {
+	max-width: 300px;
+	background-color: #ffffff;
+	border: 1px solid #f5f5f5;
+	border-radius: 3px;
+	padding: 10px;
 }
-=======
+
+.cat-item {
+	flex: 1 33%;
+	margin: 10px;
+	align-items: center;
+}
+
+.cat-photo {
+	width:  200px;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+.cat-caption {
+	text-align: center;
+	
+}

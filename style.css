@@ -74,10 +74,11 @@ body {
 #add-cat-button:hover {
 	font-size: 150px;
 	color:#16e73e;
+	background-color: white;
 	cursor:pointer;
 }
 .cat-container {
 	display: flex;
 	margin-left: 10%;
 }
-=======
+

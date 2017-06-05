@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
 
-    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="./public/style.css" media="screen">
   </head>
 
   <body>
@@ -28,19 +28,15 @@
 
     <main class="cat-container">
 
-      <article class="add-cat">
+      <article class="add-cat cat-item">
         <div class = "add-icon">
         <button type = "button" id="add-cat-button">  <i class = "fa fa-plus-square-o"></i></button>
         </div>
       </article>
-
-      <article class="cat-card">
-        <div class="cat-card-content">
-          <img src="{{url}}">
-          <p class="cat-author hidden"> {{author}} </p>
-          <p class="cat-caption">{{caption}}</p>
-        </div> 
-      </article>
+      
+      {{#each cat}} 
+        {{> cat}}
+      {{/each}}
     
     </main>
 
