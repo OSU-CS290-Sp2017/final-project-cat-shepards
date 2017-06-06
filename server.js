@@ -3,7 +3,7 @@ var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
 
-var twit_data = require('./catData');
+var catData = require('./catData');
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -13,10 +13,10 @@ app.set('view engine', 'handlebars');
 app.get('/', function(req, res, next){
 
   var templateArgs = {
-    author: catData;
-    caption: catData;
-    url: catData;
-    votes: catData;
+    author: catData,
+    caption: catData,
+    url: catData,
+    votes: catData
   };
   res.render('catPage', templateArgs);
 });
@@ -24,10 +24,10 @@ app.get('/', function(req, res, next){
 app.get('/pawpular', function(req, res, next){
 
   var templateArgs = {
-    author: catData;
-    caption: catData;
-    url: catData;
-    votes: catData;
+    author: catData,
+    caption: catData,
+    url: catData,
+    votes: catData
   };
   res.render('catPage', templateArgs);
 
