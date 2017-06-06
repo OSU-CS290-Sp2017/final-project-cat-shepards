@@ -1,5 +1,5 @@
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Nunito', sans-serif;
 	background-color: #f2e9ce;
 	margin: 0;
 }
@@ -97,7 +97,7 @@ body {
 	margin: 0;
 	display: flex;
 	justify-content: space-around;
-	flex: 0 1 28%;
+	flex: 0 1 33%;
 }
 
 .cat-card-content {
@@ -117,7 +117,7 @@ body {
 
 .cat-card-photo {
     max-height: 250px;
-    align-items: center;
+    text-align:  center;
 }
 
 .cat-caption {
@@ -138,7 +138,6 @@ body {
 .error-container h3 {
   margin: 10px 0;
   font-size: 36px;
-  font-weight: 400;
 }
 
 #upvote-button {
@@ -146,9 +145,11 @@ body {
 	background-color: white;
 	font-size: 25px;
 	color: #f29d45;
+	float: right;
 }
 
 #upvote-button:hover {
 	color: #a4391a;
 	text-shadow: 2px 2px 8px #bfb7b7;
+
 }
