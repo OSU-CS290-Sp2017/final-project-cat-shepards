@@ -10,6 +10,14 @@ var port = process.env.PORT || 3000;
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+app.get('/style.css', function(req, res) {
+  res.render(public + '/style.css')
+});
+
+app.get('/index.js', function(req, res) {
+  res.render(public + '/index.js')
+});
+
 app.get('/', function(req, res, next){
 
   var templateArgs = {
