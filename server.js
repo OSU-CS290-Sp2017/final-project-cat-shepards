@@ -23,10 +23,11 @@ app.get('/index.js', function(req, res) {
 app.get('/', function(req, res, next){
 
   var templateArgs = {
-    author: catData,
-    caption: catData,
-    url: catData,
-    votes: catData
+    cat: catData
+    // author: catData,
+    // caption: catData,
+    // url: catData,
+    // votes: catData
   };
   res.render('catPage', templateArgs);
 });
