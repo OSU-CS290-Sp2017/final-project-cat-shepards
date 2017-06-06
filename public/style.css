@@ -87,36 +87,41 @@ body {
 }
 .cat-container {
 	display: flex;
-	margin-left: 10%;
-	justify-content: center;
-/*	margin: 10px;
-*/}
+	margin: 0;
+	justify-content: space-around;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 
 .cat-card {
-	max-width: 300px;
+	margin: 0;
+	display: flex;
+	justify-content: space-around;
+	flex: 0 1 28%;
+}
+
+.cat-card-content {
 	background-color: #ffffff;
 	border: 1px solid #f5f5f5;
 	border-radius: 3px;
 	padding: 10px;
+	margin: 10px;
+
+	flex: 1 1 80%;
 }
 
 .cat-item {
-	flex: 1 33%;
 	margin: 10px;
 	align-items: center;
 }
 
-.cat-photo {
-	width:  200px;
-    height: 200px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
+.cat-card-photo {
+    max-height: 250px;
+    align-items: center;
 }
 
 .cat-caption {
 	text-align: center;
-
 }
 
 .error-container {
@@ -134,4 +139,16 @@ body {
   margin: 10px 0;
   font-size: 36px;
   font-weight: 400;
+}
+
+#upvote-button {
+	border: none;
+	background-color: white;
+	font-size: 25px;
+	color: #f29d45;
+}
+
+#upvote-button:hover {
+	color: #a4391a;
+	text-shadow: 2px 2px 8px #bfb7b7;
 }
