@@ -67,19 +67,22 @@ body {
 
 
 #add-cat-button {
-	font-size: 200px;
+	position: fixed;
+	font-size: 60px;
 	color: #f29e38;
 	border:none;
-	padding:none;
+	padding:7px;
 	background-color: #f2e9ce;
-	width:  200px;
-    height: 200px;
     margin: 0;
     text-shadow: 5px 5px 13px #c4bfbf;
+    float: right;
+    right: 20px;
+    bottom: 20px;
+    
 }
 
 #add-cat-button:hover {
-	font-size: 215px;
+	font-size: 62px;
 	color: #a53b19;
 	cursor:pointer;
 
@@ -87,17 +90,20 @@ body {
 }
 .cat-container {
 	display: flex;
-	margin: 0;
-	justify-content: space-around;
+	justify-content: center;
 	flex-direction: row;
 	flex-wrap: wrap;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 70px;
+	margin-right: 70px;
 }
 
 .cat-card {
-	margin: 0;
+	margin: 5px;
 	display: flex;
 	justify-content: space-around;
-	flex: 0 1 33%;
+	flex: 0 1 28%;
 }
 
 .cat-card-content {
@@ -105,9 +111,9 @@ body {
 	border: 1px solid #f5f5f5;
 	border-radius: 3px;
 	padding: 10px;
-	margin: 10px;
-
-	flex: 1 1 80%;
+	margin: 0px;
+	justify-content: center;
+	flex: 0 1 88%;
 }
 
 .cat-item {
@@ -116,12 +122,26 @@ body {
 }
 
 .cat-card-photo {
-    max-height: 250px;
+    max-height: 200px;
     text-align:  center;
 }
 
 .cat-caption {
 	text-align: center;
+}
+
+#upvote-button {
+	border: none;
+	background-color: white;
+	font-size: 25px;
+	color: #f29d45;
+	float: right;
+}
+
+#upvote-button:hover {
+	color: #a4391a;
+	text-shadow: 2px 2px 8px #bfb7b7;
+
 }
 
 .error-container {
@@ -140,16 +160,4 @@ body {
   font-size: 36px;
 }
 
-#upvote-button {
-	border: none;
-	background-color: white;
-	font-size: 25px;
-	color: #f29d45;
-	float: right;
-}
 
-#upvote-button:hover {
-	color: #a4391a;
-	text-shadow: 2px 2px 8px #bfb7b7;
-
-}
