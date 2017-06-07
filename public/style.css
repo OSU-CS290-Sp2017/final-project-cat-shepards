@@ -78,7 +78,7 @@ body {
     float: right;
     right: 20px;
     bottom: 20px;
-    
+
 }
 
 #add-cat-button:hover {
@@ -130,7 +130,7 @@ body {
 	text-align: center;
 }
 
-#upvote-button {
+.upvote-button {
 	border: none;
 	background-color: white;
 	font-size: 25px;
@@ -138,9 +138,10 @@ body {
 	float: right;
 }
 
-#upvote-button:hover {
+.upvote-button:hover {
 	color: #a4391a;
 	text-shadow: 2px 2px 8px #bfb7b7;
+	cursor: pointer;
 
 }
 
@@ -159,5 +160,3 @@ body {
   margin: 10px 0;
   font-size: 36px;
 }
-
-

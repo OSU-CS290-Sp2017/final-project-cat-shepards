@@ -1,9 +1,9 @@
-var catContainer = document.getElementsByClassName ('cat-container');
-catContainer.addEventListener ('click', function openTwitModal(){
-	if(event.target.classList.contains("cat-item")){
-		
-	}
-	
+// var catContainer = document.getElementsByClassName ('cat-container');
+// catContainer.addEventListener ('click', function openTwitModal(){
+// 	if(event.target.classList.contains("cat-item")){
+//
+// 	}
+
 
 	/*var backdrop = document.getElementById('modal-backdrop');
 	var createTwitModal = document.getElementById('create-twit-modal');
@@ -62,5 +62,16 @@ catContainer.addEventListener ('click', function openTwitModal(){
 			twitText.value = null;
 			twitAuthor.value = null;
 		}
-	})*/
-});
+	})
+});*/
+
+
+function upvote(){
+	console.log(event.target.firstChild);
+}
+
+
+var upvoteButtons = document.getElementsByClassName('upvote-button');
+for (var i = 0; i < upvoteButtons.length; i++) {
+	upvoteButtons[i].addEventListener('click', upvote)
+}
