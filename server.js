@@ -2,6 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
+var favicon = require('serve-favicon');
 
 var catData = require('./catData');
 var app = express();
@@ -11,6 +12,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'photos', 'favicon.ico')));
 
 app.get('/style.css', function(req, res) {
   res.render(public + '/style.css')
