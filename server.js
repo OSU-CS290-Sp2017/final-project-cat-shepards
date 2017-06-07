@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
-var favicon = require('serve-favicon');
+var favicon = require('express-favicon');
 
 var catData = require('./catData');
 var app = express();
