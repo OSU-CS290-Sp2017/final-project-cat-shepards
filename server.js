@@ -42,6 +42,10 @@ app.get('/pawpular', function(req, res, next){
 
 });
 
+app.post('/upvote',function(req, res, next) {
+  catData.votes = catData.votes++
+});
+
 app.get('*', function(req, res, next){
 
   res.status(404).render('404Page');
