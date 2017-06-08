@@ -65,13 +65,19 @@
 	})
 });*/
 
+// <script src="/catData.json" charset="utf-8"></script>
 
 function upvote(){
-	console.log(event.target.firstChild);
+	var vote = event.target.parentNode.parentNode.firstChild;
+	console.log(vote);
+	vote == vote++;
+	console.log(vote);
+	console.log(catData);
+
 }
 
 
-var upvoteButtons = document.getElementsByClassName('upvote-button');
+var upvoteButtons = document.getElementsByClassName('upvote-heart');
 for (var i = 0; i < upvoteButtons.length; i++) {
 	upvoteButtons[i].addEventListener('click', upvote)
 }
