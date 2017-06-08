@@ -74,7 +74,7 @@ function upvote(votes){
 	postRequest.open('POST', "/upvote");
 	postRequest.setRequestHeader('Content-Type', 'application/json');
 	var postBody = {
-		votes: vote
+
 	};
 	postRequest.send(JSON.stringify(postBody));
 }
@@ -86,3 +86,14 @@ var upvoteButtons = document.getElementsByClassName('upvote-heart');
 for (var i = 0; i < upvoteButtons.length; i++) {
 	upvoteButtons[i].addEventListener('click', upvote)
 }
+//
+// var catContainer = document.querySelector('cat-container');
+// catContainer.addEventListener('click'){
+// 	if (event.target.classList == 'cat-card'){
+//
+// 	}
+// 	else if(event.target.classList == 'upvote-heart') {
+// 		upvote(event);
+// 	}
+//
+// }

@@ -43,7 +43,7 @@ app.get('/pawpular', function(req, res, next){
 });
 
 app.post('/upvote',function(req, res, next) {
-  catData.votes = catData.votes++
+  // catData.votes = catData.votes++
 });
 
 app.get('*', function(req, res, next){
