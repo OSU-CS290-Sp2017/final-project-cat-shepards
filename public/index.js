@@ -66,15 +66,30 @@
 });*/
 
 // Voting Code
-/*
+
 function upvote(){
-	var vote = Handlebars.templates.catCard.votes;
+	var vote = event.target.parentNode.parentNode.firstChild	;
 	console.log(vote);
+	var postRequest = new XMLHttpRequest();
+	postRequest.open('POST', "upvote");
+	postRequest.setRequestHeader('Content-Type', 'application/json');
+	postRequest.addEventListener('load', function (event) {
+    var error;
+    if (event.target.status !== 200) {
+      error = event.target.response;
+    }
+    callback(error);
+  });
+	var postBody = {
+		votes: votes++
+	};
+	postRequest.send(JSON.stringify(postBody));
 }
+
+
 
 
 var upvoteButtons = document.getElementsByClassName('upvote-heart');
 for (var i = 0; i < upvoteButtons.length; i++) {
 	upvoteButtons[i].addEventListener('click', upvote)
 }
-*/
