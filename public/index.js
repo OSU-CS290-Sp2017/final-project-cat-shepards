@@ -67,14 +67,16 @@
 
 // Voting Code
 
-function upvote(votes){
+function upvote(){
 	var vote = event.target.parentNode.parentNode.firstChild;
 	console.log(vote);
+	var index = event.target.parentNode.getAttribute('data-index');
+	console.log(index);
 	var postRequest = new XMLHttpRequest();
 	postRequest.open('POST', "/upvote");
 	postRequest.setRequestHeader('Content-Type', 'application/json');
 	var postBody = {
-
+		index: index
 	};
 	postRequest.send(JSON.stringify(postBody));
 }
@@ -82,18 +84,12 @@ function upvote(votes){
 
 
 
-var upvoteButtons = document.getElementsByClassName('upvote-heart');
-for (var i = 0; i < upvoteButtons.length; i++) {
-	upvoteButtons[i].addEventListener('click', upvote)
-}
-//
-// var catContainer = document.querySelector('cat-container');
-// catContainer.addEventListener('click'){
-// 	if (event.target.classList == 'cat-card'){
-//
-// 	}
-// 	else if(event.target.classList == 'upvote-heart') {
-// 		upvote(event);
-// 	}
-//
-// }
+window.addEventListener('DOMContentLoaded', function (event) {
+
+	var upvoteButtons = document.getElementsByClassName('upvote-heart');
+	for (var i = 0; i < upvoteButtons.length; i++) {
+		upvoteButtons[i].addEventListener('click', upvote)
+	}
+
+
+});

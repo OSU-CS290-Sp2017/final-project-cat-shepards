@@ -3,6 +3,7 @@ var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var favicon = require('express-favicon');
+var bodyParser = require('body-parser');
 
 var catData = require('./catData');
 var app = express();
@@ -10,6 +11,8 @@ var port = process.env.PORT || 3000;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'photos', 'favicon.ico')));
@@ -43,7 +46,9 @@ app.get('/pawpular', function(req, res, next){
 });
 
 app.post('/upvote',function(req, res, next) {
-  // catData.votes = catData.votes++
+  var index = req.body.index;
+  console.log(index);
+
 });
 
 app.get('*', function(req, res, next){
