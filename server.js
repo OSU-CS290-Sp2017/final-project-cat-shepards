@@ -17,13 +17,6 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'photos', 'favicon.ico')));
 
-app.get('/style.css', function(req, res) {
-  res.render(public + '/style.css')
-});
-
-app.get('/index.js', function(req, res) {
-  res.render(public + '/index.js')
-});
 
 app.get('/', function(req, res, next){
 
@@ -36,25 +29,27 @@ app.get('/', function(req, res, next){
 app.get('/pawpular', function(req, res, next){
 
   var templateArgs = {
-    author: catData,
-    caption: catData,
-    url: catData,
-    votes: catData
+    cat: catData
   };
   res.render('catPage', templateArgs);
 
 });
 
 app.post('/upvote',function(req, res, next) {
-  var index = req.body.index;
-  console.log(index);
+  var newCatData = catData;
+  newCatData[req.body.index].votes++;
 
+  // console.log(newCatData[req.body.index].votes);
+  fs.writeFile('catData.json', JSON.stringify(newCatData), function(err){
+    if (err){
+      res.status(500).send("Unable to write to file.");
+    }
+  });
+  res.status(200).send("newCatData[req.body.index].votes");
 });
 
 app.get('*', function(req, res, next){
-
   res.status(404).render('404Page');
-
 });
 
 app.listen(port, function() {
