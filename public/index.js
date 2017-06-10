@@ -55,6 +55,9 @@ var newCatAuthor = document.getElementById('cat-author-input');
 
 // Voting Code
 
+//select all catCards
+var catCard = document.getElementsByClassName('cat-card-photo');
+
 function upvote(){
 	// var vote = event.target.parentNode.parentNode.firstChild;
 	var index = event.target.parentNode.getAttribute('data-index');
@@ -78,7 +81,20 @@ function upvote(){
 	});
 }
 
+//add click event to each car photo
+for(var i = 0; i<catCard.length; i++){
+	(function(index){
+		catCard[index].addEventListener("click", function() {
+			console.log("clicked on cat number ", index);
+			console.log("image url :", catCard[index].src);
+			var cat = catCard[index];
+			var url = cat.src;
+			window.open(url);
+			//postRequest.setRequestHeader('cat-card-content', 'application/josn');
 
+		})
+	})(i);
+}
 
 
 window.addEventListener('DOMContentLoaded', function (event) {
