@@ -126,8 +126,17 @@ body {
     text-align:  center;
 }
 
+.cat-card-photo:hover {
+	
+}
+
 .cat-caption {
 	text-align: center;
+}
+
+.cat-author {
+	text-align: center;
+	font-size: 12px;
 }
 
 .upvote-button {

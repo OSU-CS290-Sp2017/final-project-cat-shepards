@@ -1,5 +1,5 @@
 // var catContainer = document.getElementsByClassName ('cat-container');
-// catContainer.addEventListener ('click', function openTwitModal(){
+// catContainer.addEventListener ('click', function openCatModal(){
 // 	if(event.target.classList.contains("cat-item")){
 //
 // 	}
@@ -53,6 +53,50 @@ var newCatURL = document.getElementById('cat-url-input');
 var newCatDescription = document.getElementById('cat-description-input');
 var newCatAuthor = document.getElementById('cat-author-input');
 
+/*********** STILL NEED TO HANDLE 'modal-accept-button' CLICKS ********************/
+
+
+
+/*************** Search bar stuff ********************/
+
+function handleSearchInput(event) {
+	
+	var arrayOfCats = document.getElementsByClassName('cat-card');
+	var arrayOfCatCaptions = document.getElementsByClassName('cat-caption');
+	var arrayOfCatAuthors = document.getElementsByClassName('cat-author');
+	
+
+	var searchInput = this.value.toLowerCase(); 
+	
+
+	console.log("****Search Input: ", searchInput);
+
+	for(var i = 0; i < arrayOfCatCaptions.length; i++) {
+		var currCatCaption = arrayOfCatCaptions[i].textContent.toLowerCase();
+		var currCatAuthor = arrayOfCatAuthors[i].textContent.toLowerCase();
+		var currCat = arrayOfCats[i];
+
+		 console.log("CurrentCatText: ", currCatCaption);
+		 console.log("CurrentCatAuthor: ", currCatAuthor);
+		 
+		//If the search value is not in the Cat text or author 
+		if((currCatCaption.indexOf(searchInput) === -1) && (currCatAuthor.indexOf(searchInput) === -1)) {
+			console.log("====Search input not found=====");
+			currCat.classList.add('hidden');
+			// currCat.style.display = 'none';
+			
+		}
+		else { 
+			console.log("!!!!Search input is found!!!!");
+			currCat.classList.remove('hidden');
+	
+		}
+		
+	}
+}
+
+var userSearchInput = document.getElementById('navbar-search-input');
+userSearchInput.addEventListener('input', handleSearchInput);
 // Voting Code
 
 //select all catCards
@@ -107,3 +151,13 @@ window.addEventListener('DOMContentLoaded', function (event) {
 
 
 });
+
+
+
+
+
+
+
+
+
+
