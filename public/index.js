@@ -90,6 +90,8 @@ function upvote(){
 		console.log(newVote);
 	});
 	// event.target.parentNode.parentNode.firstChild = newVote;
+	// var newVote = (JSON.parse(postRequest.response)[0]);
+	console.log();
 }
 
 
