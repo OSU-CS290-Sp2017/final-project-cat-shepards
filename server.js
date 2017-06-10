@@ -65,9 +65,12 @@ app.post('/upvote',function(req, res, next) {
       console.log("Error fetching cat from database.")
       res.status(500).send("fail");
     } else {
+      var catArray = collection.find({cats: {$slice:[index,1]}});
       // var cat = catData[index];
-      collection.update( {"$arrayElemAt": ["$cats", index]}, {inc: {votes: 1}});
-      // var vote = collection.catData[index];
+      console.log(catArray);
+      // catArray.updateOne( {inc: {votes: 1}});
+
+
       res.send([3]);
     }
   })
