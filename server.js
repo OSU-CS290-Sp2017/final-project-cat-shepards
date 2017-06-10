@@ -2,7 +2,6 @@ var path = require('path');
 var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
-var favicon = require('express-favicon');
 var bodyParser = require('body-parser');
 
 var catData = require('./catData');
@@ -15,7 +14,6 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'photos', 'favicon.ico')));
 
 
 app.get('/', function(req, res, next){
