@@ -77,7 +77,8 @@ function upvote(){
 			error = event.target.response;
 		}
 		var newVote = (JSON.parse(postRequest.response)[0]);
-		location.reload();
+		console.log(newVote);
+		// location.reload();
 	});
 }
 
