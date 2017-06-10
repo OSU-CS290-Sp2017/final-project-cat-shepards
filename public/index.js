@@ -68,10 +68,9 @@
 // Voting Code
 
 function upvote(){
-	var vote = event.target.parentNode.parentNode.firstChild;
-	console.log(vote);
+	// var vote = event.target.parentNode.parentNode.firstChild;
 	var index = event.target.parentNode.getAttribute('data-index');
-	console.log(index);
+
 	var postRequest = new XMLHttpRequest();
 	postRequest.open('POST', "/upvote");
 	postRequest.setRequestHeader('Content-Type', 'application/json');
@@ -87,11 +86,8 @@ function upvote(){
 			error = event.target.response;
 		}
 		var newVote = (JSON.parse(postRequest.response)[0]);
-		console.log(newVote);
+		location.reload();
 	});
-	// event.target.parentNode.parentNode.firstChild = newVote;
-	// var newVote = (JSON.parse(postRequest.response)[0]);
-	console.log();
 }
 
 
