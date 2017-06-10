@@ -4,66 +4,54 @@
 //
 // 	}
 
+/*************** Make the modal appear upon click **************/
 
-	/*var backdrop = document.getElementById('modal-backdrop');
-	var createTwitModal = document.getElementById('create-twit-modal');
-	var closeCreateTwitModal = document.querySelector('.modal-close-button');
-	var cancelCreateTwitModal = document.querySelector('.modal-cancel-button');
-	var createTwit = document.querySelector('.modal-accept-button');
-	var twitText = document.getElementById('twit-text-input');
-	var twitAuthor = document.getElementById('twit-attribution-input');
-	createTwitModal.classList.remove('hidden');
-	backdrop.classList.remove('hidden');
-	closeCreateTwitModal.addEventListener ('click', function closeTwitModal(){
-		backdrop.classList.add ('hidden');
-		createTwitModal.classList.add ('hidden');
-		twitText.value = null;
-		twitAuthor.value = null;
-		closeCreateTwitModal.removeEventListener ('click', closeTwitModal);			//Am I doing this right?
-	})
-	cancelCreateTwitModal.addEventListener ('click', function closeTwitModal(){
-		backdrop.classList.add ('hidden');
-		createTwitModal.classList.add ('hidden');
-		twitText.value = null;
-		twitAuthor.value = null;
-		closeCreateTwitModal.removeEventListener ('click', closeTwitModal);
-	})
-	createTwit.addEventListener ('click', function createNewTwit(){
-		if(twitText.value == "" || twitAuthor.value == ""){
-			alert('Please enter text and an author for the twit.');
-		}
-		else{
-			var newTwit = document.createElement('article');
-			var newTwitIcon = document.createElement('div');
-			var newTwitContent = document.createElement('div');
-			var newTwitText = document.createElement('p');
-			var newTwitAttribution = document.createElement('p');
-			var newTwitAuthor = document.createElement('a');
-			var newIconImage = "<i class=\"fa fa-bullhorn\"></i>"
-			newTwit.classList.add('twit');
-			newTwitIcon.classList.add('twit-icon');
-			newTwitIcon.innerHTML = newIconImage;
-			newTwitContent.classList.add('twit-content');
-			newTwitText.classList.add('twit-text');
-			newTwitText.textContent = twitText.value;
-			newTwitAttribution.classList.add('twit-attribution');
-			newTwitAuthor.setAttribute('href', '#');
-			newTwitAuthor.textContent = twitAuthor.value;
-			newTwit.appendChild(newTwitIcon);
-			newTwitContent.appendChild(newTwitText);
-			newTwitContent.appendChild(newTwitAttribution);
-			newTwitAttribution.appendChild(newTwitAuthor);
-			newTwit.appendChild(newTwitContent);
-			var twitContainer = document.getElementsByClassName('twit-container');
-			twitContainer[0].appendChild(newTwit);
-			backdrop.classList.add ('hidden');
-			createTwitModal.classList.add ('hidden');
-			createTwit.removeEventListener ('click', createNewTwit);
-			twitText.value = null;
-			twitAuthor.value = null;
-		}
-	})
-});*/
+var modalBackdrop = document.getElementById('modal-backdrop');
+var addCatModal = document.getElementById('create-cat-modal');
+
+function handleAddCatButtonClick (event) {
+	/*=== Make backdrop appear upon click ===*/
+	modalBackdrop.classList.remove('hidden');
+
+	/*=== Make add cat modal appear upon click ===*/
+	addCatModal.classList.remove('hidden');
+}
+
+var addCatButton = document.getElementById('add-cat-button');
+addCatButton.addEventListener('click', handleAddCatButtonClick);
+
+/************** Hide add cat modal ***************************/
+function handleModalCloseButtonClick(event) {
+	/*=== Make modal & backdrop hidden && clear out text fields ===*/
+	modalBackdrop.classList.add('hidden');
+
+	/*=== Make add cat modal hidden ===*/
+	addCatModal.classList.add('hidden');
+	newCatURL.value = null;
+	newCatDescription.value = null;
+	newCatAuthor.value = null;
+}
+
+var modalCloseButton = document.querySelector('.modal-close-button');
+modalCloseButton.addEventListener('click', handleModalCloseButtonClick);
+
+function handleModalCancelButtonClick(event) {
+	/*=== Make modal & backdrop hidden && clear out  fields ===*/
+	modalBackdrop.classList.add('hidden');
+
+	/*=== Make add cat modal hidden ===*/
+	addCatModal.classList.add('hidden');
+	newCatURL.value = null;
+	newCatDescription.value = null;
+	newCatAuthor.value = null;
+}
+
+var modalCancelButton = document.querySelector('.modal-cancel-button');
+modalCancelButton.addEventListener('click', handleModalCancelButtonClick);
+
+var newCatURL = document.getElementById('cat-url-input');
+var newCatDescription = document.getElementById('cat-description-input');
+var newCatAuthor = document.getElementById('cat-author-input');
 
 // Voting Code
 
