@@ -38,14 +38,14 @@ app.get('/pawpular', function(req, res, next){
 app.post('/upvote',function(req, res, next) {
   var newCatData = catData;
   newCatData[req.body.index].votes++;
-
-  // console.log(newCatData[req.body.index].votes);
+  var vote = newCatData[req.body.index].votes;
   fs.writeFile('catData.json', JSON.stringify(newCatData), function(err){
     if (err){
       res.status(500).send("Unable to write to file.");
+    } else{
+      res.send([vote]);
     }
   });
-  res.status(200).send("newCatData[req.body.index].votes");
 });
 
 app.get('*', function(req, res, next){

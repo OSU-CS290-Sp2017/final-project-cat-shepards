@@ -75,10 +75,21 @@ function upvote(){
 	var postRequest = new XMLHttpRequest();
 	postRequest.open('POST', "/upvote");
 	postRequest.setRequestHeader('Content-Type', 'application/json');
+
 	var postBody = {
 		index: index
 	};
 	postRequest.send(JSON.stringify(postBody));
+
+	postRequest.addEventListener('load', function(event) {
+		var error;
+		if (event.target.status !== 200){
+			error = event.target.response;
+		}
+		var newVote = (JSON.parse(postRequest.response)[0]);
+		console.log(newVote);
+	});
+	// event.target.parentNode.parentNode.firstChild = newVote;
 }
 
 
