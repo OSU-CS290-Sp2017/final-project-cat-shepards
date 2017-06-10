@@ -67,7 +67,7 @@ app.post('/upvote',function(req, res, next) {
     } else {
       var catArray = collection.find({cats: {$slice:[index,1]}});
       // var cat = catData[index];
-      console.log(catArray);
+      // console.log(catArray);
       // catArray.updateOne( {inc: {votes: 1}});
 
 
