@@ -3,9 +3,9 @@ var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require('mongodb');
 
-// var catData = require('./catData');
+var catData = require('./catData');
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -39,6 +39,7 @@ app.get('/', function(req, res, next){
       var templateArgs = {
         cat: catData
       };
+      // console.log(catData);
       res.render('catPage', templateArgs);
     }
 
@@ -57,35 +58,18 @@ app.get('/pawpular', function(req, res, next){
 
 app.post('/upvote',function(req, res, next) {
 
-  var index = req.body.index;
-
+  var dataID = req.body.dataID;
   var collection = mongoDB.collection('cats');
-  collection.find( {}).toArray(function (err, catData) {
+  var id = new MongoClient.ObjectID(dataID);
+  collection.update({ _id: id}, { $inc: { votes: 1}}, function(err, result){
     if (err) {
       console.log("Error fetching cat from database.")
       res.status(500).send("fail");
-    } else {
-      var catArray = collection.find({cats: {$slice:[index,1]}});
-      // var cat = catData[index];
-      // console.log(catArray);
-      // catArray.updateOne( {inc: {votes: 1}});
-
-
-      res.send([3]);
     }
-  })
-
-
-  // var newCatData = catData;
-  // newCatData[req.body.index].votes++;
-  // var vote = newCatData[req.body.index].votes;
-  // fs.writeFile('catData.json', JSON.stringify(newCatData), function(err){
-  //   if (err){
-  //     res.status(500).send("Unable to write to file.");
-  //   } else{
-  //     res.send([vote]);
-  //   }
-  // });
+    else {
+        res.status(200).send();
+    }
+  });
 });
 
 app.get('*', function(req, res, next){

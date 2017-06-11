@@ -60,14 +60,14 @@ var newCatAuthor = document.getElementById('cat-author-input');
 /*************** Search bar stuff ********************/
 
 function handleSearchInput(event) {
-	
+
 	var arrayOfCats = document.getElementsByClassName('cat-card');
 	var arrayOfCatCaptions = document.getElementsByClassName('cat-caption');
 	var arrayOfCatAuthors = document.getElementsByClassName('cat-author');
-	
 
-	var searchInput = this.value.toLowerCase(); 
-	
+
+	var searchInput = this.value.toLowerCase();
+
 
 	console.log("****Search Input: ", searchInput);
 
@@ -78,20 +78,20 @@ function handleSearchInput(event) {
 
 		 console.log("CurrentCatText: ", currCatCaption);
 		 console.log("CurrentCatAuthor: ", currCatAuthor);
-		 
-		//If the search value is not in the Cat text or author 
+
+		//If the search value is not in the Cat text or author
 		if((currCatCaption.indexOf(searchInput) === -1) && (currCatAuthor.indexOf(searchInput) === -1)) {
 			console.log("====Search input not found=====");
 			currCat.classList.add('hidden');
 			// currCat.style.display = 'none';
-			
+
 		}
-		else { 
+		else {
 			console.log("!!!!Search input is found!!!!");
 			currCat.classList.remove('hidden');
-	
+
 		}
-		
+
 	}
 }
 
@@ -104,14 +104,14 @@ var catCard = document.getElementsByClassName('cat-card-photo');
 
 function upvote(){
 	// var vote = event.target.parentNode.parentNode.firstChild;
-	var index = event.target.parentNode.getAttribute('data-index');
+	var dataID = event.target.parentNode.getAttribute('dataID').toString();
 
 	var postRequest = new XMLHttpRequest();
 	postRequest.open('POST', "/upvote");
 	postRequest.setRequestHeader('Content-Type', 'application/json');
 
 	var postBody = {
-		index: index
+		dataID: dataID
 	};
 	postRequest.send(JSON.stringify(postBody));
 
@@ -119,10 +119,9 @@ function upvote(){
 		var error;
 		if (event.target.status !== 200){
 			error = event.target.response;
+		} else {
+			location.reload();
 		}
-		var newVote = (JSON.parse(postRequest.response)[0]);
-		console.log(newVote);
-		// location.reload();
 	});
 }
 
@@ -151,13 +150,3 @@ window.addEventListener('DOMContentLoaded', function (event) {
 
 
 });
-
-
-
-
-
-
-
-
-
-
