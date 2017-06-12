@@ -9,13 +9,22 @@ var catData = require('./catData');
 var app = express();
 var port = process.env.PORT || 3000;
 
-var mongoHost = process.env.MONGO_HOST || "classmongo.engr.oregonstate.edu";
-var mongoPort = process.env.MONGO_PORT || 27017;
+// var mongoHost = process.env.MONGO_HOST || "classmongo.engr.oregonstate.edu";
+// var mongoPort = process.env.MONGO_PORT || 27017;
+// var mongoUser = process.env.MONGO_USER || "cs290_janzeng";
+// var mongoPassword = process.env.MONGO_PASSWORD || "youshallnotpass";
+// var mongoDBName = process.env.MONGO_DB || "cs290_janzeng";
+// var mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword +
+//   '@' + mongoHost + ':' + mongoPort + '/' + mongoDBName;
+
+var mongoHost = process.env.MONGO_HOST || "ds143151.mlab.com";
+var mongoPort = process.env.MONGO_PORT || 43151;
 var mongoUser = process.env.MONGO_USER || "cs290_janzeng";
-var mongoPassword = process.env.MONGO_PASSWORD || "youshallnotpass";
-var mongoDBName = process.env.MONGO_DB || "cs290_janzeng";
+var mongoPassword = process.env.MONGO_PASSWORD || "y0ushallnotpass";
+var mongoDBName = process.env.MONGO_DB || "heroku_bp42bgrj";
 var mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword +
   '@' + mongoHost + ':' + mongoPort + '/' + mongoDBName;
+// var mongoURL = "mongodb://cs290_janzeng:y0ushallnotpass@ds143151.mlab.com:43151/heroku_bp42bgrj"
 var mongoDB;
 
 console.log('== MongoDB URL:', mongoURL);
