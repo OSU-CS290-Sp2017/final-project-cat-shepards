@@ -4,7 +4,7 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb');
-
+var Handlebars = require('handlebars');
 var catData = require('./catData');
 var app = express();
 var port = process.env.PORT || 3000;
@@ -48,11 +48,50 @@ app.get('/', function(req, res, next){
 });
 
 app.get('/pawpular', function(req, res, next){
-
-  var templateArgs = {
-    cat: catData
+  function sort(data){
+    var swapped = true;
+    var i = 0;
+    var temp;
+    while(swapped){
+      swapped = false;
+      i++;
+      for(var j = 0; j<data.length-i; j++){
+        if(data[j].votes < data[j+1].votes){
+          temp = data[j];
+          data[j] = data[j+1];
+          data[j+1] = temp;
+          swapped = true;
+        }
+      }
+    }
   };
-  res.render('catPage', templateArgs);
+
+  var collection = mongoDB.collection('cats');
+  collection.find({}).toArray(function(err, catData){
+    if(err){
+      res.status(500).send("Error fetching cats from db.");
+    }
+
+    else{
+      var newCatData = catData;
+      sort(newCatData);
+      Handlebars.registerHelper('cat', function(from, to, context, options){
+        var item = "";
+        for(var i = from, j = to; i<j; i++){
+          console.log("in helper for loop");
+          item = item + options.fn(context[i]);
+        }
+        return item;
+      });
+
+      var templateArgs = {
+        cat: catData
+      };
+      res.render('pawpularPage', templateArgs);
+    }
+  });
+
+
 
 });
 
