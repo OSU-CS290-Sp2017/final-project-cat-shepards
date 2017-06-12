@@ -19,7 +19,7 @@ var port = process.env.PORT || 3000;
 
 var mongoHost = process.env.MONGO_HOST || "ds143151.mlab.com";
 var mongoPort = process.env.MONGO_PORT || 43151;
-var mongoUser = process.env.MONGO_USER || "heroku_bp42bgrj";
+var mongoUser = process.env.MONGO_USER || "cs290_janzeng";
 var mongoPassword = process.env.MONGO_PASSWORD || "y0ushallnotpass";
 var mongoDBName = process.env.MONGO_DB || "heroku_bp42bgrj";
 var mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword +
