@@ -39,7 +39,6 @@ app.get('/', function(req, res, next){
       var templateArgs = {
         cat: catData
       };
-      // console.log(catData);
       res.render('catPage', templateArgs);
     }
 
@@ -89,8 +88,6 @@ app.get('/pawpular', function(req, res, next){
       res.render('pawpularPage', templateArgs);
     }
   });
-
-
 });
 
 app.post('/upvote',function(req, res, next) {
