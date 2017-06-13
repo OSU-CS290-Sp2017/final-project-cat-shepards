@@ -54,7 +54,34 @@ var newCatDescription = document.getElementById('cat-description-input');
 var newCatAuthor = document.getElementById('cat-author-input');
 
 /*********** STILL NEED TO HANDLE 'modal-accept-button' CLICKS ********************/
+// - add response if at least one of the required fields is not filled
+// - (optional) add alert if url does not link to a valid photo
+// - 
+var modalAcceptButton = document.querySelector('.modal-accept-button');
+modalAcceptButton.addEventListener('click', handleModalAcceptButtonClick);
+function handleModalAcceptButtonClick(event) {
+	/*=== Make modal & backdrop hidden && clear out  fields ===*/
+	modalBackdrop.classList.add('hidden');
 
+	/*=== Make add cat modal hidden ===*/
+	addCatModal.classList.add('hidden');
+
+	var postRequest = new XMLHttpRequest();
+	postRequest.open('POST', "/newCat");
+	postRequest.setRequestHeader('Content-Type', 'application/json');
+	console.log("before postBody");
+	var postBody = {
+		newCatURL: newCatURL.value,
+		newCatDescription: newCatDescription.value,
+		newCatAuthor: newCatAuthor.value
+	};
+	console.log("after postBody");
+	
+
+	newCatURL.value = null;
+	newCatDescription.value = null;
+	newCatAuthor.value = null;
+}
 
 
 /*************** Search bar stuff ********************/
