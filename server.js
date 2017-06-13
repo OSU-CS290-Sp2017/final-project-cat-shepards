@@ -39,7 +39,6 @@ app.get('/', function(req, res, next){
       var templateArgs = {
         cat: catData
       };
-      // console.log(catData);
       res.render('catPage', templateArgs);
     }
 
@@ -78,7 +77,6 @@ app.get('/pawpular', function(req, res, next){
       Handlebars.registerHelper('cat', function(from, to, context, options){
         var item = "";
         for(var i = from, j = to; i<j; i++){
-          // console.log("in helper for loop");
           item = item + options.fn(context[i]);
         }
         return item;
@@ -90,9 +88,6 @@ app.get('/pawpular', function(req, res, next){
       res.render('pawpularPage', templateArgs);
     }
   });
-
-
-
 });
 
 app.post('/upvote',function(req, res, next) {
@@ -131,6 +126,3 @@ MongoClient.connect(mongoURL, function (err, db) {
     console.log("== Server listening on port", port);
   });
 });
-// app.listen(port, function() {
-//   console.log("Server listening on port", port);
-// });
