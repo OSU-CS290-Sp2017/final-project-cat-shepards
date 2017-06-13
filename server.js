@@ -111,6 +111,11 @@ app.post('/upvote',function(req, res, next) {
   });
 });
 
+app.post('/newCat', function(req, res, next) {
+  var collection = mongoDB.collection('cats');
+  collection.insert(postBody);
+});
+
 app.get('*', function(req, res, next){
   res.status(404).render('404Page');
 });
