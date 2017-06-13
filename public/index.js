@@ -76,7 +76,7 @@ function handleModalAcceptButtonClick(event) {
 		newCatAuthor: newCatAuthor.value
 	};
 	console.log("after postBody");
-	postRequest.send(JSON.stringify(postBody));
+	
 
 	newCatURL.value = null;
 	newCatDescription.value = null;

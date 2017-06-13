@@ -9,11 +9,11 @@ var catData = require('./catData');
 var app = express();
 var port = process.env.PORT || 3000;
 
-var mongoHost = process.env.MONGO_HOST || "ds143151.mlab.com";
-var mongoPort = process.env.MONGO_PORT || 43151;
+var mongoHost = process.env.MONGO_HOST || "classmongo.engr.oregonstate.edu";
+var mongoPort = process.env.MONGO_PORT || 27017;
 var mongoUser = process.env.MONGO_USER || "cs290_janzeng";
-var mongoPassword = process.env.MONGO_PASSWORD || "y0ushallnotpass";
-var mongoDBName = process.env.MONGO_DB || "heroku_bp42bgrj";
+var mongoPassword = process.env.MONGO_PASSWORD || "youshallnotpass";
+var mongoDBName = process.env.MONGO_DB || "cs290_janzeng";
 var mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword +
   '@' + mongoHost + ':' + mongoPort + '/' + mongoDBName;
 var mongoDB;
@@ -78,6 +78,7 @@ app.get('/pawpular', function(req, res, next){
       Handlebars.registerHelper('cat', function(from, to, context, options){
         var item = "";
         for(var i = from, j = to; i<j; i++){
+          // console.log("in helper for loop");
           item = item + options.fn(context[i]);
         }
         return item;
@@ -89,6 +90,7 @@ app.get('/pawpular', function(req, res, next){
       res.render('pawpularPage', templateArgs);
     }
   });
+
 
 
 });
@@ -111,6 +113,7 @@ app.post('/upvote',function(req, res, next) {
 
 app.post('/newCat', function(req, res, next) {
   var collection = mongoDB.collection('cats');
+  console.log()
   collection.insert(postBody);
 });
 
@@ -127,3 +130,6 @@ MongoClient.connect(mongoURL, function (err, db) {
     console.log("== Server listening on port", port);
   });
 });
+// app.listen(port, function() {
+//   console.log("Server listening on port", port);
+// });
