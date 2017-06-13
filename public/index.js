@@ -69,15 +69,15 @@ function handleModalAcceptButtonClick(event) {
 	var postRequest = new XMLHttpRequest();
 	postRequest.open('POST', "/newCat");
 	postRequest.setRequestHeader('Content-Type', 'application/json');
-	console.log("before postBody");
 	var postBody = {
-		newCatURL: newCatURL.value,
-		newCatDescription: newCatDescription.value,
-		newCatAuthor: newCatAuthor.value
+		caption: newCatDescription.value,
+		author: newCatAuthor.value,
+		url: newCatURL.value,
+		votes: 1
 	};
-	console.log("after postBody");
+	postRequest.send(JSON.stringify(postBody));
+	location.reload();
 	
-
 	newCatURL.value = null;
 	newCatDescription.value = null;
 	newCatAuthor.value = null;

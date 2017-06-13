@@ -106,10 +106,11 @@ app.post('/upvote',function(req, res, next) {
   });
 });
 
-app.post('/newCat', function(req, res, next) {
+app.post("/newCat", function(req, res, next) {
   var collection = mongoDB.collection('cats');
-  console.log()
-  collection.insert(postBody);
+  collection.insert(req.body);
+  res.status(200).send();
+  
 });
 
 app.get('*', function(req, res, next){
