@@ -37,16 +37,11 @@ function handleModalCancelButtonClick(event) {
 	newCatAuthor.value = null;
 }
 
-
-
 var newCatURL = document.getElementById('cat-url-input');
 var newCatDescription = document.getElementById('cat-description-input');
 var newCatAuthor = document.getElementById('cat-author-input');
 
-/*********** STILL NEED TO HANDLE 'modal-accept-button' CLICKS ********************/
-// - add response if at least one of the required fields is not filled
-// - (optional) add alert if url does not link to a valid photo
-// -
+/*********** 'modal-accept-button' ********************/
 
 function handleModalAcceptButtonClick(event) {
 	/*=== Make modal & backdrop hidden && clear out  fields ===*/
@@ -65,7 +60,16 @@ function handleModalAcceptButtonClick(event) {
 		votes: 1
 	};
 	postRequest.send(JSON.stringify(postBody));
-	location.reload();
+
+	postRequest.addEventListener('load', function(postEvent) {
+		var error;
+		if (postEvent.target.status !== 200){
+			error = postEvent.target.response;
+		}
+		else {
+			location.reload();
+		}
+	});
 
 	newCatURL.value = null;
 	newCatDescription.value = null;
@@ -130,7 +134,7 @@ function upvote(){
 	};
 	postRequest.send(JSON.stringify(postBody));
 
-	postRequest.addEventListener('load', function(postEvent, newVote) {
+	postRequest.addEventListener('load', function(postEvent) {
 		var error;
 		if (postEvent.target.status !== 200){
 			error = postEvent.target.response;
