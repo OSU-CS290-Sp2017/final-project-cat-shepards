@@ -1,11 +1,9 @@
 var path = require('path');
-var fs = require('fs');
 var express = require('express');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb');
 var Handlebars = require('handlebars');
-var catData = require('./catData');
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -30,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', function(req, res, next){
-
   var collection = mongoDB.collection('cats');
   collection.find({}).toArray(function (err, catData){
     if (err) {
@@ -41,10 +38,9 @@ app.get('/', function(req, res, next){
       };
       res.render('catPage', templateArgs);
     }
-
   });
-
 });
+
 
 app.get('/pawpular', function(req, res, next){
   function sort(data){
@@ -90,6 +86,8 @@ app.get('/pawpular', function(req, res, next){
   });
 });
 
+
+
 app.post('/upvote',function(req, res, next) {
 
   var dataID = req.body.dataID;
@@ -112,6 +110,8 @@ app.post('/upvote',function(req, res, next) {
   );
 });
 
+
+
 app.post("/newCat", function(req, res, next) {
   var collection = mongoDB.collection('cats');
   collection.insert(req.body);
@@ -119,9 +119,11 @@ app.post("/newCat", function(req, res, next) {
 
 });
 
+
 app.get('*', function(req, res, next){
   res.status(404).render('404Page');
 });
+
 
 MongoClient.connect(mongoURL, function (err, db) {
   if (err) {
