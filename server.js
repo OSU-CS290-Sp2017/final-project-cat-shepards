@@ -95,22 +95,28 @@ app.post('/upvote',function(req, res, next) {
   var dataID = req.body.dataID;
   var collection = mongoDB.collection('cats');
   var id = new MongoClient.ObjectID(dataID);
-  collection.update({ _id: id}, { $inc: { votes: 1}}, function(err, result){
-    if (err) {
-      console.log("Error fetching cat from database.")
-      res.status(500).send("fail");
+  collection.findOneAndUpdate(
+    { _id: id},
+    { $inc: { votes: 1} },
+    { projection: { "votes" : 1, "_id": 0 } },
+    function(err, result){
+      if (err) {
+        console.log("Error fetching cat from database.")
+        res.status(500).send("fail");
+      }
+      else {
+        var newVote = result.value;
+        res.status(200).send(newVote);
+      }
     }
-    else {
-        res.status(200).send();
-    }
-  });
+  );
 });
 
 app.post("/newCat", function(req, res, next) {
   var collection = mongoDB.collection('cats');
   collection.insert(req.body);
   res.status(200).send();
-  
+
 });
 
 app.get('*', function(req, res, next){

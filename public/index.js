@@ -1,8 +1,3 @@
-// var catContainer = document.getElementsByClassName ('cat-container');
-// catContainer.addEventListener ('click', function openCatModal(){
-// 	if(event.target.classList.contains("cat-item")){
-//
-// 	}
 
 /*************** Make the modal appear upon click **************/
 
@@ -17,9 +12,6 @@ function handleAddCatButtonClick (event) {
 	addCatModal.classList.remove('hidden');
 }
 
-var addCatButton = document.getElementById('add-cat-button');
-addCatButton.addEventListener('click', handleAddCatButtonClick);
-
 /************** Hide add cat modal ***************************/
 function handleModalCloseButtonClick(event) {
 	/*=== Make modal & backdrop hidden && clear out text fields ===*/
@@ -32,8 +24,7 @@ function handleModalCloseButtonClick(event) {
 	newCatAuthor.value = null;
 }
 
-var modalCloseButton = document.querySelector('.modal-close-button');
-modalCloseButton.addEventListener('click', handleModalCloseButtonClick);
+
 
 function handleModalCancelButtonClick(event) {
 	/*=== Make modal & backdrop hidden && clear out  fields ===*/
@@ -46,8 +37,7 @@ function handleModalCancelButtonClick(event) {
 	newCatAuthor.value = null;
 }
 
-var modalCancelButton = document.querySelector('.modal-cancel-button');
-modalCancelButton.addEventListener('click', handleModalCancelButtonClick);
+
 
 var newCatURL = document.getElementById('cat-url-input');
 var newCatDescription = document.getElementById('cat-description-input');
@@ -56,9 +46,8 @@ var newCatAuthor = document.getElementById('cat-author-input');
 /*********** STILL NEED TO HANDLE 'modal-accept-button' CLICKS ********************/
 // - add response if at least one of the required fields is not filled
 // - (optional) add alert if url does not link to a valid photo
-// - 
-var modalAcceptButton = document.querySelector('.modal-accept-button');
-modalAcceptButton.addEventListener('click', handleModalAcceptButtonClick);
+// -
+
 function handleModalAcceptButtonClick(event) {
 	/*=== Make modal & backdrop hidden && clear out  fields ===*/
 	modalBackdrop.classList.add('hidden');
@@ -77,7 +66,7 @@ function handleModalAcceptButtonClick(event) {
 	};
 	postRequest.send(JSON.stringify(postBody));
 	location.reload();
-	
+
 	newCatURL.value = null;
 	newCatDescription.value = null;
 	newCatAuthor.value = null;
@@ -122,16 +111,15 @@ function handleSearchInput(event) {
 	}
 }
 
-var userSearchInput = document.getElementById('navbar-search-input');
-userSearchInput.addEventListener('input', handleSearchInput);
-// Voting Code
 
-//select all catCards
-var catCard = document.getElementsByClassName('cat-card-photo');
+
+/*************** Handle upvote clicks **************/
 
 function upvote(){
-	// var vote = event.target.parentNode.parentNode.firstChild;
-	var dataID = event.target.parentNode.getAttribute('dataID').toString();
+
+	if (event.target.parentNode.getAttribute('dataID')) {
+		var dataID = event.target.parentNode.getAttribute('dataID').toString();
+	}
 
 	var postRequest = new XMLHttpRequest();
 	postRequest.open('POST', "/upvote");
@@ -142,16 +130,25 @@ function upvote(){
 	};
 	postRequest.send(JSON.stringify(postBody));
 
-	postRequest.addEventListener('load', function(event) {
+	postRequest.addEventListener('load', function(postEvent, newVote) {
 		var error;
-		if (event.target.status !== 200){
-			error = event.target.response;
-		} else {
-			location.reload();
+		if (postEvent.target.status !== 200){
+			error = postEvent.target.response;
 		}
 	});
+
+ 	if (event.target.parentNode.parentNode.firstChild.nextSibling.getAttribute('votes')) {
+		var votes = event.target.parentNode.parentNode.firstChild.nextSibling.innerText;
+		var votesNum = parseInt(votes);
+		var votesNumPlus = votesNum + 1;
+		event.target.parentNode.parentNode.firstChild.nextSibling.innerText = votesNumPlus;
+	}
+
 }
 
+
+//select all catCards
+var catCard = document.getElementsByClassName('cat-card-photo');
 //add click event to each car photo
 for(var i = 0; i<catCard.length; i++){
 	(function(index){
@@ -175,5 +172,19 @@ window.addEventListener('DOMContentLoaded', function (event) {
 		upvoteButtons[i].addEventListener('click', upvote)
 	}
 
+	var modalCloseButton = document.querySelector('.modal-close-button');
+	modalCloseButton.addEventListener('click', handleModalCloseButtonClick);
+
+	var addCatButton = document.getElementById('add-cat-button');
+	addCatButton.addEventListener('click', handleAddCatButtonClick);
+
+	var modalCancelButton = document.querySelector('.modal-cancel-button');
+	modalCancelButton.addEventListener('click', handleModalCancelButtonClick);
+
+	var userSearchInput = document.getElementById('navbar-search-input');
+	userSearchInput.addEventListener('input', handleSearchInput);
+
+	var modalAcceptButton = document.querySelector('.modal-accept-button');
+	modalAcceptButton.addEventListener('click', handleModalAcceptButtonClick);
 
 });
